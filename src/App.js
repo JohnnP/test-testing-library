@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import {useState} from 'react';
+
 import './App.css';
 
 function App() {
+  const [displayText, setDisplayText] = useState(false);
+  const [displayText2, setDisplayText2] = useState(false);
+
+  const onDisplayButtonClick = () => {
+    setDisplayText(displayText => !displayText);
+  };
+  
+  const onDisplayButtonClick2 = () => {
+    setDisplayText2(displayText => !displayText);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={onDisplayButtonClick}>Faire apparaitre du texte</button>
+      {displayText && <div>{'Le texte s\'affiche'}</div>}
+      
+      <button onClick={onDisplayButtonClick2}>Faire apparaitre du texte 2</button>
+      {displayText2 && <div>{'Le texte s\'affiche'}</div>}
     </div>
   );
-}
+} 
 
 export default App;
