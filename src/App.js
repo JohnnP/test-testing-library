@@ -1,5 +1,7 @@
 import {useState} from 'react';
 
+import Welcome from './Welcome';
+
 import './App.css';
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
       
       <button onClick={onDisplayButtonClick2}>Faire apparaitre du texte 2</button>
       {displayText2 && <div>{'Le texte s\'affiche'}</div>}
+
+      <Welcome />
     </div>
   );
 } 

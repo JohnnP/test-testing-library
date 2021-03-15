@@ -1,4 +1,4 @@
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, fireEvent, screen} from '@testing-library/react';
 import App from './App';
 
 test('renders the button', () => {
@@ -14,14 +14,16 @@ test('should display the text when we click on the button', () => {
   fireEvent.click(screen.getByRole('button', {name: 'Faire apparaitre du texte'}));
 
   expect(getByText('Le texte s\'affiche')).toBeInTheDocument();
-});
+}); 
 
 test('should not display the text when we click two times on the button', () => {
-  const { queryByText } = render(<App />);
+  const { queryByText: qbt } = render(<App />);
 
   fireEvent.click(screen.getByRole('button', {name: 'Faire apparaitre du texte'}));
   fireEvent.click(screen.getByRole('button' , {name: 'Faire apparaitre du texte'}));
 
-  expect(queryByText('Le texte s\'affiche')).not.toBeInTheDocument();
+  // les deux lignes suivant sont identiques
+  expect(screen.queryByText('Le texte s\'affiche')).not.toBeInTheDocument();
+  expect(qbt('Le texte s\'affiche')).not.toBeInTheDocument();
 });
  
